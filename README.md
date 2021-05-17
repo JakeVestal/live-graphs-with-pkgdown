@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of live.graphs.with.pkgdown is to …
+so far it’s a test…
 
 ## Installation
 
