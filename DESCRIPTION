@@ -3,6 +3,11 @@ Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
 Author: Who wrote it
+Depends: R (>= 3.3.0)
+Suggests: MASS, rmarkdown, deldir, orientlib, lattice, misc3d,
+          magick, plotrix (>= 3.7-3), tripack, interp, alphashape3d, tcltk,
+          js (>= 1.2), akima, webshot2, downlit, pkgdown, extrafont,
+          shiny, manipulateWidget (>= 0.9.0), testthat
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
@@ -11,5 +16,21 @@ Encoding: UTF-8
 LazyData: true
 URL: https://jakevestal.github.io/live.graphs.with.pkgdown
 Imports: 
+    crosstalk,
+    graphics,
+    grDevices,
+    htmltools,
+    htmlwidgets,
     leaflet,
-    rgl
+    magrittr,
+    rgl,
+    stats,
+    utils
+SystemRequirements: OpenGL, GLU Library, XQuartz (on OSX),
+    zlib (optional), libpng (>=1.2.9, optional), FreeType (optional),
+    pandoc (>=1.14, needed for vignettes)
+BugReports: https://github.com/dmurdoch/rgl/issues
+VignetteBuilder: knitr
+Biarch: true
+Additional_repositories: https://dmurdoch.github.io/drat
+RoxygenNote: 7.1.1
