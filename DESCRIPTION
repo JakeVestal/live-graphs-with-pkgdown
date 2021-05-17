@@ -10,3 +10,6 @@ License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 URL: https://jakevestal.github.io/live.graphs.with.pkgdown
+Imports: 
+    leaflet,
+    rgl
