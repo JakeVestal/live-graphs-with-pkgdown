@@ -14,6 +14,10 @@ graphics... but you can use it too :).
 
 SETUP
 =======================================================
+
+You could just download or fork this repo and build your site from that, but the
+process I used was as follows:
+
 0) Create an R package that you want to document and publish.
 1) Open RStudio. You probably need to 'Run as Admin' -- whatever that means for your particular OS.
 2) Update all of your packages. Probably should go ahead and make sure you're running the most recent versions of R and RStudio as well.
@@ -58,21 +62,6 @@ if (!requireNamespace("rmarkdown", quietly = TRUE) ||
   knitr::knit_exit()
 }
 setupKnitr(autoprint = TRUE)
-```
-
-```{r polyhedra, fig.height=1.5, echo = FALSE}
-hcl.colors <- rgl:::hcl.colors  # might be cm.colors on old R
-col <- hcl.colors(5)
-mfrow3d(1,5)
-shade3d(icosahedron3d(), col = col[1])
-next3d()
-shade3d(dodecahedron3d(), col = col[2])
-next3d()
-shade3d(octahedron3d(), col = col[3])
-next3d()
-shade3d(cube3d(), col = col[4])
-next3d()
-shade3d(tetrahedron3d(), col = col[5])
 ```
 
 INTRODUCTION

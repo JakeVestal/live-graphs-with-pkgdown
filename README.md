@@ -1,9 +1,53 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# RGL - 3D visualization device system for R using OpenGL
+# Live Plots in a pkgdown GitHub Pages Site
 
-![](man/figures/READMEpolyhedra-1-rgl.png)<!-- -->
+This package (and its GitHub Pages branch & site) were written for my
+own personal reference so that I could remember how to set up a
+[pkgdown](https://pkgdown.r-lib.org/) GitHub Pages site with live,
+interactive graphics… but you can use it too :).
+
+# SETUP
+
+You could just download or fork this repo and build your site from that,
+but the process I used was as follows:
+
+1.  Create an R package that you want to document and publish.
+2.  Open RStudio. You probably need to ‘Run as Admin’ – whatever that
+    means for your particular OS.
+3.  Update all of your packages. Probably should go ahead and make sure
+    you’re running the most recent versions of R and RStudio as well.
+4.  Install these packages:
+
+``` r
+remotes::install_github(
+  c(
+    "r-lib/downlit", "r-lib/pkgdown", 
+    "dmurdoch/rgl", "dmurdoch/htmlwidgets@rglpatch"
+  )
+)
+```
+
+1.  Create a new ‘gh-pages’ branch on your repo:
+
+<!-- -->
+
+    git checkout --orphan gh-pages
+    git rm -rf .
+    git commit --allow-empty -m 'Initial gh-pages commit'
+    git push origin gh-pages
+    git checkout master
+
+1.  Reboot your computer
+2.  run `usethis::use_pkgdown_github_pages()`
+3.  Knit your README.Rmd
+4.  Check your DESCRIPTION file and make sure the `SystemRequirements`,
+    `VignetteBuilder`, `Imports`, `Depends`, and `Suggests` fields
+    include the objects listed in the DESCRIPTION file in this repo (you
+    may add more but deleting something may break your site).
+5.  run `pkgdown::build_site()` to preview the site
+6.  Push to Git.
 
 ## INTRODUCTION
 
@@ -133,7 +177,7 @@ Binary builds of `rgl` are available for some platforms on CRAN.
 For source builds, install the prerequisites as described above,
 download the tarball and at the command line run
 
-    R CMD INSTALL rgl_0.106.19.tar.gz
+R CMD INSTALL rgl\_0.106.19.tar.gz
 
 (with the appropriate version of the tarball). The build uses an
 `autoconf` configure script; to see the options, expand the tarball and
@@ -141,11 +185,11 @@ run `./configure --help`.
 
 Alternatively, in R run
 
-    install.packages("rgl")
+install.packages(“rgl”)
 
 to install from CRAN, or
 
-    remotes::install_github("dmurdoch/rgl")
+remotes::install\_github(“dmurdoch/rgl”)
 
 to install the development version from Github.
 
@@ -155,7 +199,7 @@ As of version 0.104.1, it is possible to build the package without
 OpenGL support on Unix-alikes (including macOS) with the configure
 option –disable-opengl For example,
 
-    R CMD INSTALL --configure-args="--disable-opengl" rgl_0.106.19.tar.gz 
+R CMD INSTALL –configure-args=“–disable-opengl” rgl\_0.106.19.tar.gz
 
 On Windows, OpenGL support cannot currently be disabled.
 
