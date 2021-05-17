@@ -1,140 +1,253 @@
 ---
-title: "Using RGL in pkgdown web sites"
-author: "Duncan Murdoch"
-output:
-  rmarkdown::html_vignette:
-    fig_height: 5
-    fig_width: 5
-    toc: yes
-  pdf_document:
-    fig_height: 5
-    fig_width: 5
-    toc: yes
-  html_document:
-    default
-vignette: >
-  %\VignetteIndexEntry{Using RGL in pkgdown web sites}
-  %\VignetteEngine{knitr::rmarkdown}
+output: github_document
 ---
 
-```{r setup, include=FALSE}
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+RGL - 3D visualization device system for R using OpenGL
+=======================================================
+
+```{r include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README"
+)
+options(rgl.useNULL=TRUE)
+suppressPackageStartupMessages(library(rgl))
+
 if (!requireNamespace("rmarkdown", quietly = TRUE) ||
     !rmarkdown::pandoc_available("1.14")) {
   warning(call. = FALSE, "These vignettes assume rmarkdown and pandoc version 1.14.  These were not found. Older versions will not work.")
   knitr::knit_exit()
 }
-knitr::opts_chunk$set(echo = TRUE)
-library(rgl)
-options(rgl.useNULL = TRUE)
 setupKnitr(autoprint = TRUE)
 ```
 
-
-## What is the problem?
-
-[pkgdown](https://pkgdown.r-lib.org/) is an R package that
-makes it easy to build a web site for your package.  However, the current version 1.6.1 on CRAN doesn't work so well for
-packages whose examples use RGL or other packages like [leaflet](http://rstudio.github.io/leaflet/) that use
-[htmlwidgets](http://www.htmlwidgets.org).  This document
-describes current progress in supporting both of these.
-
-The main problem for [pkgdown](https://pkgdown.r-lib.org/) support
-is that RGL and other [htmlwidgets](http://www.htmlwidgets.org)
-users require multiple Javascript libraries to be linked to
-each web page.  `pkgdown` 1.6.1 can't do this, but the 
-current development version on Github
-adds support for additional dependent libraries.  This 
-also requires changes to [downlit](https://downlit.r-lib.org/), and
-for other widgets, [changes to htmlwidgets](https://github.com/ramnathv/htmlwidgets/pull/404).
-
-## Installing the changes
-
-Installing the changes is fairly easy.  Make sure you have the
-[remotes](https://remotes.r-lib.org/) package installed, then 
-run
-
-```{r eval=FALSE}
-remotes::install_github(c("r-lib/downlit",
-                          "r-lib/pkgdown",
-                          "dmurdoch/rgl",
-                          "dmurdoch/htmlwidgets@rglpatch"))
+```{r polyhedra, fig.height=1.5, echo = FALSE}
+hcl.colors <- rgl:::hcl.colors  # might be cm.colors on old R
+col <- hcl.colors(5)
+mfrow3d(1,5)
+shade3d(icosahedron3d(), col = col[1])
+next3d()
+shade3d(dodecahedron3d(), col = col[2])
+next3d()
+shade3d(octahedron3d(), col = col[3])
+next3d()
+shade3d(cube3d(), col = col[4])
+next3d()
+shade3d(tetrahedron3d(), col = col[5])
 ```
 
-With these development version packages installed, you should 
-see RGL or `leaflet` output appear automatically in examples.
-The RGL output is set up to mimic what would happen in a
-`knitr` document that uses 
-```{r eval=FALSE}
-setupKnitr(autoprint = TRUE)
+INTRODUCTION
+------------
+The RGL package is a visualization device system for R, using 
+OpenGL or WebGL as the rendering backend. An OpenGL rgl device 
+at its core is a real-time 3D engine written in C++. It provides an 
+interactive viewpoint navigation facility (mouse + wheel support)
+and an R programming interface.  WebGL, on the other hand, is
+rendered in a web browser; rgl produces the input file, and the 
+browser shows the images.
+
+WEBSITE
+-------
+
+A `pkgdown` website is here:
+
+ https://dmurdoch.github.io/rgl/
+ 
+The unreleased development version website is here:
+
+ https://dmurdoch.github.io/rgl/dev/
+ 
+See [this vignette](https://dmurdoch.github.io/rgl/dev/articles/pkgdown.html)
+for details on producing your own `pkgdown` website that
+includes `rgl` graphics.
+
+The currently active development site is here:
+
+ https://github.com/dmurdoch/rgl
+
+
+INSTALLATION
+------------
+
+Most users will want to install the latest CRAN release.
+For Windows, macOS and some Linux platforms, installation can 
+be easy, as CRAN distributes binary versions:
+
 ```
-i.e. the output RGL commands will automatically be 
-included in the display.  Low-level changes will be collected
-into a single display:
-```{r}
-# Show regression plane with z as dependent variable
+# Install latest release from CRAN
+install.packages("rgl")
+```
+
+To install the latest development version from Github, 
+you'll need to do a source install.  Those aren't easy!
+Try
+
+```
+# Install development version from Github
+remotes::install_github("dmurdoch/rgl")
+```
+
+If that fails, read the instructions below.
+
+
+LICENSE
+-------
+The software is released under the GNU Public License. 
+See [COPYING](./COPYING) for details.
+
+
+FEATURES
+--------
+- portable R package using OpenGL (if available) on macOS, Win32 and X11
+- can produce 3D graphics in web pages using WebGL
+- R programming interface 
+- interactive viewpoint navigation
+- automatic data focus
+- geometry primitives: 
+  points, lines, triangles, quads, texts, point sprites
+- high-level geometry:
+  surface, spheres
+- up to 8 light sources
+- alpha-blending (transparency)
+- side-dependent fill-mode rendering (dots, wired and filled)
+- texture-mapping with mipmapping and environment mapping support
+- environmental effects:
+  fogging, background sphere
+- bounding box with axis ticks marks
+- undo operation:
+  shapes and light-sources are managed on type stacks,
+  where the top-most objects can be popped, or any item specified by
+  an identifier can be removed
+
+
+PLATFORMS
+---------
+macOS
+Windows 7/10
+Unix-derivatives
+
+
+BUILD TOOLS
+-----------
+R recommended tools (gcc toolchain)
+On Windows, Rtools40 (or earlier versions for pre-R-4.0.0)
+
+REQUIREMENTS
+------------
+**For OpenGL display:**
+
+Windowing System (unix/x11 or Windows)  
+OpenGL Library  
+OpenGL Utility Library (GLU)  
+
+**For WebGL display:**
+
+A browser with WebGL enabled.  See https://get.webgl.org.
+
+Installing OpenGL support
+-----------------------
+
+**Debian:**  
+aptitude install libgl1-mesa-dev libglu1-mesa-dev
+
+**Fedora:**  
+yum install mesa-libGL-devel mesa-libGLU-devel libpng-devel
+
+**macOS:**  
+Install XQuartz.  
+`rgl` should work with either XQuartz 2.7.11 or 2.8.0, but
+it will probably need rebuilding if the XQuartz version
+changes.  XQuartz normally needs re-installation whenever the
+macOS version changes.
+
+**Windows:**  
+Windows normally includes OpenGL support, but to get the
+appropriate include files etc., you will need 
+the appropriate version of
+[Rtools](https://cran.r-project.org/bin/windows/Rtools/)
+matched to your R version.  
+
+Options
+-------
+
+The **libpng** library version 1.2.9 or newer is needed for pixmap import/export support.
+
+The **freetype** library is needed for resizable 
+anti-aliased fonts.  On Windows, it will be downloaded 
+from https://github.com/rwinlib during the install.
+
+
+BUILDING/INSTALLING
+-------------------
+
+Binary builds of `rgl` are available for some platforms on CRAN.
+
+For source builds, install the prerequisites as described
+above, download
+the tarball and at the command line run
+
+    R CMD INSTALL rgl_`r packageVersion("rgl")`.tar.gz
+
+(with the appropriate version of the tarball).  The build
+uses an `autoconf` configure script; to see the options, 
+expand the tarball and run `./configure --help`.
+
+Alternatively,
+in R run
+
+    install.packages("rgl")
+
+to install from CRAN, or
+
+    remotes::install_github("dmurdoch/rgl")
+    
+to install the development version from Github.
+
+
+BUILDING WITHOUT OPENGL
+-----------------------
+  
+As of version 0.104.1, it is possible to build the package without
+OpenGL support on Unix-alikes (including macOS) with the configure option
+    --disable-opengl 
+For example,
+  
+    R CMD INSTALL --configure-args="--disable-opengl" rgl_`r packageVersion("rgl")`.tar.gz 
+  
+  On Windows, OpenGL support cannot currently be disabled.
+  
+  
+DOCUMENTATION and DEMOS: 
+------------------------
+
+```
 library(rgl)
-open3d()
-x <- rnorm(100)
-y <- rnorm(100)
-z <- 0.2*x - 0.3*y + rnorm(100, sd = 0.3)
-fit <- lm(z ~ x + y)
-
-plot3d(x, y, z, type = "s", col = "red", size = 1)
-
-# No plot here, because of the planes3d() call below
-
-coefs <- coef(fit)
-a <- coefs["x"]
-b <- coefs["y"]
-c <- -1
-d <- coefs["(Intercept)"]
-planes3d(a, b, c, d, alpha = 0.5)
+browseVignettes("rgl")
+demo(rgl)
 ```
 
-## Specifying the size of figures
-
-By default, pkgdown generates standard plots which are wider
-than they are high (according to the golden ratio).  Often
-RGL plots look better with equal width and height, since
-the contents may be rotated by the user.
-
-To specify the size of plots in pkgdown, you use the `figures`
-entry in `_pkgdown.yml`.  The defaults are similar to
-```
-figures:
-  dev: ragg::agg_png
-  dpi: 96
-  dev.args: []
-  fig.ext: png
-  fig.width: 7
-  fig.height: ~
-  fig.retina: 2
-  fig.asp: 1.618
-  bg: NA
-  other.parameters: []
-```
-
-By default RGL uses these parameters as well, but allows you 
-to override any of `fig.width`, `fig.height` and `fig.asp` by
-specifying an `rgl` entry in `other.parameters`.  For example:
-```
-figures:
-  fig.width: 5
-  other.parameters:
-    rgl:
-      fig.asp: 1
-```
-This will make all plots have a width of 5 inches
-and will make RGL plots square.
-
-## Is this safe to use?
-
-These are development versions of the packages, so they may
-contain bugs, either in my changes or in other unreleased 
-changes.  I don't recommend you use them in regular production
-code.  To re-install released versions of the packages, run
-```{r eval=FALSE}
-install.packages(c("downlit", "pkgdown", "htmlwidgets", "rgl"))
-```
-
-If you do use them and notice any bugs, please [report them](https://github.com/dmurdoch/rgl/issues)!
+CREDITS
+-------
+Daniel Adler <dadler@uni-goettingen.de>  
+Duncan Murdoch <murdoch@stats.uwo.ca>  
+Oleg Nenadic <onenadi@uni-goettingen.de>  
+Simon Urbanek <simon.urbanek@math.uni-augsburg.de>  
+Ming Chen <mchen34@uwo.ca>  
+Albrecht Gebhardt <albrecht.gebhardt@uni-klu.ac.at>  
+Ben Bolker <bolker@zoo.ufl.edu>  
+Gabor Csardi <csardi@rmki.kfki.hu>  
+Adam Strzelecki <ono@java.pl>  
+Alexander Senger <senger@physik.hu-berlin.de>  
+The R Core Team for some code from R.  
+Dirk Eddelbuettel <edd@debian.org>  
+The authors of Shiny for their private RNG code.  
+The authors of `knitr` for their graphics inclusion code.
+Jeroen Ooms for `Rtools40` and `FreeType` help.  
+Yohann Demont for Shiny code, suggestions, and testing.  
+Joshua Ulrich for a lot of help with the Github migration.  
+Xavier Fernandez i Marin for help debugging the build.  
+George Helffrich for draping code.  
+Ivan Krylov for window_group code in X11.  
