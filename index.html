@@ -60,44 +60,149 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="livegraphswithpkgdown" class="section level1">
+<div id="rgl---3d-visualization-device-system-for-r-using-opengl" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#livegraphswithpkgdown" class="anchor"></a>live.graphs.with.pkgdown</h1></div>
-<!-- badges: start -->
-<!-- badges: end -->
-<p>so far it’s a test…</p>
+<a href="#rgl---3d-visualization-device-system-for-r-using-opengl" class="anchor"></a>RGL - 3D visualization device system for R using OpenGL</h1></div>
+<p><img src="reference/figures/READMEpolyhedra-1-rgl.png"><!-- --></p>
+<div id="introduction" class="section level2">
+<h2 class="hasAnchor">
+<a href="#introduction" class="anchor"></a>INTRODUCTION</h2>
+<p>The RGL package is a visualization device system for R, using OpenGL or WebGL as the rendering backend. An OpenGL rgl device at its core is a real-time 3D engine written in C++. It provides an interactive viewpoint navigation facility (mouse + wheel support) and an R programming interface. WebGL, on the other hand, is rendered in a web browser; rgl produces the input file, and the browser shows the images.</p>
+</div>
+<div id="website" class="section level2">
+<h2 class="hasAnchor">
+<a href="#website" class="anchor"></a>WEBSITE</h2>
+<p>A <code>pkgdown</code> website is here:</p>
+<p><a href="https://dmurdoch.github.io/rgl/" class="uri">https://dmurdoch.github.io/rgl/</a></p>
+<p>The unreleased development version website is here:</p>
+<p><a href="https://dmurdoch.github.io/rgl/dev/" class="uri">https://dmurdoch.github.io/rgl/dev/</a></p>
+<p>See <a href="https://dmurdoch.github.io/rgl/dev/articles/pkgdown.html">this vignette</a> for details on producing your own <code>pkgdown</code> website that includes <code>rgl</code> graphics.</p>
+<p>The currently active development site is here:</p>
+<p><a href="https://github.com/dmurdoch/rgl" class="uri">https://github.com/dmurdoch/rgl</a></p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of live.graphs.with.pkgdown from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"live.graphs.with.pkgdown"</span><span class="op">)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"JakeVestal/live.graphs.with.pkgdown"</span><span class="op">)</span></code></pre></div>
+<a href="#installation" class="anchor"></a>INSTALLATION</h2>
+<p>Most users will want to install the latest CRAN release. For Windows, macOS and some Linux platforms, installation can be easy, as CRAN distributes binary versions:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Install latest release from CRAN</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">install.packages</span>(<span class="st">"rgl"</span>)</span></code></pre></div>
+<p>To install the latest development version from Github, you’ll need to do a source install. Those aren’t easy! Try</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Install development version from Github</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"dmurdoch/rgl"</span>)</span></code></pre></div>
+<p>If that fails, read the instructions below.</p>
 </div>
-<div id="example" class="section level2">
+<div id="license" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jakevestal.github.io/live.graphs.with.pkgdown">live.graphs.with.pkgdown</a></span><span class="op">)</span>
-<span class="co">## basic example code</span></code></pre></div>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span>
-<span class="co">#&gt;      speed           dist       </span>
-<span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span>
-<span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span>
-<span class="co">#&gt;  Median :15.0   Median : 36.00  </span>
-<span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span>
-<span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span>
-<span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code>devtools::build_readme()</code> is handy for this. You could also use GitHub Actions to re-render <code>README.Rmd</code> every time you push. An example workflow can be found here: <a href="https://github.com/r-lib/actions/tree/master/examples" class="uri">https://github.com/r-lib/actions/tree/master/examples</a>.</p>
-<p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" width="100%"></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
+<a href="#license" class="anchor"></a>LICENSE</h2>
+<p>The software is released under the GNU Public License. See <a href="./COPYING">COPYING</a> for details.</p>
+</div>
+<div id="features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#features" class="anchor"></a>FEATURES</h2>
+<ul>
+<li>portable R package using OpenGL (if available) on macOS, Win32 and X11</li>
+<li>can produce 3D graphics in web pages using WebGL</li>
+<li>R programming interface</li>
+<li>interactive viewpoint navigation</li>
+<li>automatic data focus</li>
+<li>geometry primitives: points, lines, triangles, quads, texts, point sprites</li>
+<li>high-level geometry: surface, spheres</li>
+<li>up to 8 light sources</li>
+<li>alpha-blending (transparency)</li>
+<li>side-dependent fill-mode rendering (dots, wired and filled)</li>
+<li>texture-mapping with mipmapping and environment mapping support</li>
+<li>environmental effects: fogging, background sphere</li>
+<li>bounding box with axis ticks marks</li>
+<li>undo operation: shapes and light-sources are managed on type stacks, where the top-most objects can be popped, or any item specified by an identifier can be removed</li>
+</ul>
+</div>
+<div id="platforms" class="section level2">
+<h2 class="hasAnchor">
+<a href="#platforms" class="anchor"></a>PLATFORMS</h2>
+<p>macOS Windows 7/10 Unix-derivatives</p>
+</div>
+<div id="build-tools" class="section level2">
+<h2 class="hasAnchor">
+<a href="#build-tools" class="anchor"></a>BUILD TOOLS</h2>
+<p>R recommended tools (gcc toolchain) On Windows, Rtools40 (or earlier versions for pre-R-4.0.0)</p>
+</div>
+<div id="requirements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#requirements" class="anchor"></a>REQUIREMENTS</h2>
+<p><strong>For OpenGL display:</strong></p>
+<p>Windowing System (unix/x11 or Windows)<br>
+OpenGL Library<br>
+OpenGL Utility Library (GLU)</p>
+<p><strong>For WebGL display:</strong></p>
+<p>A browser with WebGL enabled. See <a href="https://get.webgl.org" class="uri">https://get.webgl.org</a>.</p>
+</div>
+<div id="installing-opengl-support" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installing-opengl-support" class="anchor"></a>Installing OpenGL support</h2>
+<p><strong>Debian:</strong><br>
+aptitude install libgl1-mesa-dev libglu1-mesa-dev</p>
+<p><strong>Fedora:</strong><br>
+yum install mesa-libGL-devel mesa-libGLU-devel libpng-devel</p>
+<p><strong>macOS:</strong><br>
+Install XQuartz.<br><code>rgl</code> should work with either XQuartz 2.7.11 or 2.8.0, but it will probably need rebuilding if the XQuartz version changes. XQuartz normally needs re-installation whenever the macOS version changes.</p>
+<p><strong>Windows:</strong><br>
+Windows normally includes OpenGL support, but to get the appropriate include files etc., you will need the appropriate version of <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> matched to your R version.</p>
+</div>
+<div id="options" class="section level2">
+<h2 class="hasAnchor">
+<a href="#options" class="anchor"></a>Options</h2>
+<p>The <strong>libpng</strong> library version 1.2.9 or newer is needed for pixmap import/export support.</p>
+<p>The <strong>freetype</strong> library is needed for resizable anti-aliased fonts. On Windows, it will be downloaded from <a href="https://github.com/rwinlib" class="uri">https://github.com/rwinlib</a> during the install.</p>
+</div>
+<div id="buildinginstalling" class="section level2">
+<h2 class="hasAnchor">
+<a href="#buildinginstalling" class="anchor"></a>BUILDING/INSTALLING</h2>
+<p>Binary builds of <code>rgl</code> are available for some platforms on CRAN.</p>
+<p>For source builds, install the prerequisites as described above, download the tarball and at the command line run</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>R CMD INSTALL rgl_<span class="dv">0</span>.<span class="dv">106</span>.<span class="fl">19.</span>tar.gz</span></code></pre></div>
+<p>(with the appropriate version of the tarball). The build uses an <code>autoconf</code> configure script; to see the options, expand the tarball and run <code>./configure --help</code>.</p>
+<p>Alternatively, in R run</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">install.packages</span>(<span class="st">"rgl"</span>)</span></code></pre></div>
+<p>to install from CRAN, or</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"dmurdoch/rgl"</span>)</span></code></pre></div>
+<p>to install the development version from Github.</p>
+</div>
+<div id="building-without-opengl" class="section level2">
+<h2 class="hasAnchor">
+<a href="#building-without-opengl" class="anchor"></a>BUILDING WITHOUT OPENGL</h2>
+<p>As of version 0.104.1, it is possible to build the package without OpenGL support on Unix-alikes (including macOS) with the configure option –disable-opengl For example,</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>R CMD INSTALL <span class="op">--</span>configure<span class="op">-</span>args=<span class="st">"--disable-opengl"</span> rgl_<span class="dv">0</span>.<span class="dv">106</span>.<span class="fl">19.</span>tar.gz </span></code></pre></div>
+<p>On Windows, OpenGL support cannot currently be disabled.</p>
+</div>
+<div id="documentation-and-demos" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation-and-demos" class="anchor"></a>DOCUMENTATION and DEMOS:</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">library</span>(rgl)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">browseVignettes</span>(<span class="st">"rgl"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">demo</span>(rgl)</span></code></pre></div>
+</div>
+<div id="credits" class="section level2">
+<h2 class="hasAnchor">
+<a href="#credits" class="anchor"></a>CREDITS</h2>
+<p>Daniel Adler <a href="mailto:dadler@uni-goettingen.de" class="email">dadler@uni-goettingen.de</a><br>
+Duncan Murdoch <a href="mailto:murdoch@stats.uwo.ca" class="email">murdoch@stats.uwo.ca</a><br>
+Oleg Nenadic <a href="mailto:onenadi@uni-goettingen.de" class="email">onenadi@uni-goettingen.de</a><br>
+Simon Urbanek <a href="mailto:simon.urbanek@math.uni-augsburg.de" class="email">simon.urbanek@math.uni-augsburg.de</a><br>
+Ming Chen <a href="mailto:mchen34@uwo.ca" class="email">mchen34@uwo.ca</a><br>
+Albrecht Gebhardt <a href="mailto:albrecht.gebhardt@uni-klu.ac.at" class="email">albrecht.gebhardt@uni-klu.ac.at</a><br>
+Ben Bolker <a href="mailto:bolker@zoo.ufl.edu" class="email">bolker@zoo.ufl.edu</a><br>
+Gabor Csardi <a href="mailto:csardi@rmki.kfki.hu" class="email">csardi@rmki.kfki.hu</a><br>
+Adam Strzelecki <a href="mailto:ono@java.pl" class="email">ono@java.pl</a><br>
+Alexander Senger <a href="mailto:senger@physik.hu-berlin.de" class="email">senger@physik.hu-berlin.de</a><br>
+The R Core Team for some code from R.<br>
+Dirk Eddelbuettel <a href="mailto:edd@debian.org" class="email">edd@debian.org</a><br>
+The authors of Shiny for their private RNG code.<br>
+The authors of <code>knitr</code> for their graphics inclusion code. Jeroen Ooms for <code>Rtools40</code> and <code>FreeType</code> help.<br>
+Yohann Demont for Shiny code, suggestions, and testing.<br>
+Joshua Ulrich for a lot of help with the Github migration.<br>
+Xavier Fernandez i Marin for help debugging the build.<br>
+George Helffrich for draping code.<br>
+Ivan Krylov for window_group code in X11.</p>
 </div>
 </div>
   </div>
