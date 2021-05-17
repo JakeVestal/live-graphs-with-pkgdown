@@ -72,6 +72,7 @@ jobs:
       - name: Build READMEs
         run: |
           library(rmarkdown)
+          print(paste0("Working directory is: ", getwd()))
           setwd("inst/htmlwidgets/lib/rglClass")
           render("README.Rmd", github_document(html_preview = FALSE))
         shell: Rscript {0}
