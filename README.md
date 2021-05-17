@@ -1,61 +1,189 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# live.graphs.with.pkgdown
+# RGL - 3D visualization device system for R using OpenGL
 
-<!-- badges: start -->
-<!-- badges: end -->
+![](man/figures/READMEpolyhedra-1-rgl.png)<!-- -->
 
-so far it’s a test…
+## INTRODUCTION
 
-## Installation
+The RGL package is a visualization device system for R, using OpenGL or
+WebGL as the rendering backend. An OpenGL rgl device at its core is a
+real-time 3D engine written in C++. It provides an interactive viewpoint
+navigation facility (mouse + wheel support) and an R programming
+interface. WebGL, on the other hand, is rendered in a web browser; rgl
+produces the input file, and the browser shows the images.
 
-You can install the released version of live.graphs.with.pkgdown from
-[CRAN](https://CRAN.R-project.org) with:
+## WEBSITE
 
-``` r
-install.packages("live.graphs.with.pkgdown")
-```
+A `pkgdown` website is here:
 
-And the development version from [GitHub](https://github.com/) with:
+<https://dmurdoch.github.io/rgl/>
 
-``` r
-# install.packages("devtools")
-devtools::install_github("JakeVestal/live.graphs.with.pkgdown")
-```
+The unreleased development version website is here:
 
-## Example
+<https://dmurdoch.github.io/rgl/dev/>
 
-This is a basic example which shows you how to solve a common problem:
+See [this
+vignette](https://dmurdoch.github.io/rgl/dev/articles/pkgdown.html) for
+details on producing your own `pkgdown` website that includes `rgl`
+graphics.
 
-``` r
-library(live.graphs.with.pkgdown)
-## basic example code
-```
+The currently active development site is here:
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+<https://github.com/dmurdoch/rgl>
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
+## INSTALLATION
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/master/examples>.
+Most users will want to install the latest CRAN release. For Windows,
+macOS and some Linux platforms, installation can be easy, as CRAN
+distributes binary versions:
 
-You can also embed plots, for example:
+    # Install latest release from CRAN
+    install.packages("rgl")
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+To install the latest development version from Github, you’ll need to do
+a source install. Those aren’t easy! Try
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+    # Install development version from Github
+    remotes::install_github("dmurdoch/rgl")
+
+If that fails, read the instructions below.
+
+## LICENSE
+
+The software is released under the GNU Public License. See
+[COPYING](./COPYING) for details.
+
+## FEATURES
+
+-   portable R package using OpenGL (if available) on macOS, Win32 and
+    X11
+-   can produce 3D graphics in web pages using WebGL
+-   R programming interface
+-   interactive viewpoint navigation
+-   automatic data focus
+-   geometry primitives: points, lines, triangles, quads, texts, point
+    sprites
+-   high-level geometry: surface, spheres
+-   up to 8 light sources
+-   alpha-blending (transparency)
+-   side-dependent fill-mode rendering (dots, wired and filled)
+-   texture-mapping with mipmapping and environment mapping support
+-   environmental effects: fogging, background sphere
+-   bounding box with axis ticks marks
+-   undo operation: shapes and light-sources are managed on type stacks,
+    where the top-most objects can be popped, or any item specified by
+    an identifier can be removed
+
+## PLATFORMS
+
+macOS Windows 7/10 Unix-derivatives
+
+## BUILD TOOLS
+
+R recommended tools (gcc toolchain) On Windows, Rtools40 (or earlier
+versions for pre-R-4.0.0)
+
+## REQUIREMENTS
+
+**For OpenGL display:**
+
+Windowing System (unix/x11 or Windows)  
+OpenGL Library  
+OpenGL Utility Library (GLU)
+
+**For WebGL display:**
+
+A browser with WebGL enabled. See <https://get.webgl.org>.
+
+## Installing OpenGL support
+
+**Debian:**  
+aptitude install libgl1-mesa-dev libglu1-mesa-dev
+
+**Fedora:**  
+yum install mesa-libGL-devel mesa-libGLU-devel libpng-devel
+
+**macOS:**  
+Install XQuartz.  
+`rgl` should work with either XQuartz 2.7.11 or 2.8.0, but it will
+probably need rebuilding if the XQuartz version changes. XQuartz
+normally needs re-installation whenever the macOS version changes.
+
+**Windows:**  
+Windows normally includes OpenGL support, but to get the appropriate
+include files etc., you will need the appropriate version of
+[Rtools](https://cran.r-project.org/bin/windows/Rtools/) matched to your
+R version.
+
+## Options
+
+The **libpng** library version 1.2.9 or newer is needed for pixmap
+import/export support.
+
+The **freetype** library is needed for resizable anti-aliased fonts. On
+Windows, it will be downloaded from <https://github.com/rwinlib> during
+the install.
+
+## BUILDING/INSTALLING
+
+Binary builds of `rgl` are available for some platforms on CRAN.
+
+For source builds, install the prerequisites as described above,
+download the tarball and at the command line run
+
+    R CMD INSTALL rgl_0.106.19.tar.gz
+
+(with the appropriate version of the tarball). The build uses an
+`autoconf` configure script; to see the options, expand the tarball and
+run `./configure --help`.
+
+Alternatively, in R run
+
+    install.packages("rgl")
+
+to install from CRAN, or
+
+    remotes::install_github("dmurdoch/rgl")
+
+to install the development version from Github.
+
+## BUILDING WITHOUT OPENGL
+
+As of version 0.104.1, it is possible to build the package without
+OpenGL support on Unix-alikes (including macOS) with the configure
+option –disable-opengl For example,
+
+    R CMD INSTALL --configure-args="--disable-opengl" rgl_0.106.19.tar.gz 
+
+On Windows, OpenGL support cannot currently be disabled.
+
+## DOCUMENTATION and DEMOS:
+
+    library(rgl)
+    browseVignettes("rgl")
+    demo(rgl)
+
+## CREDITS
+
+Daniel Adler <dadler@uni-goettingen.de>  
+Duncan Murdoch <murdoch@stats.uwo.ca>  
+Oleg Nenadic <onenadi@uni-goettingen.de>  
+Simon Urbanek <simon.urbanek@math.uni-augsburg.de>  
+Ming Chen <mchen34@uwo.ca>  
+Albrecht Gebhardt <albrecht.gebhardt@uni-klu.ac.at>  
+Ben Bolker <bolker@zoo.ufl.edu>  
+Gabor Csardi <csardi@rmki.kfki.hu>  
+Adam Strzelecki <ono@java.pl>  
+Alexander Senger <senger@physik.hu-berlin.de>  
+The R Core Team for some code from R.  
+Dirk Eddelbuettel <edd@debian.org>  
+The authors of Shiny for their private RNG code.  
+The authors of `knitr` for their graphics inclusion code. Jeroen Ooms
+for `Rtools40` and `FreeType` help.  
+Yohann Demont for Shiny code, suggestions, and testing.  
+Joshua Ulrich for a lot of help with the Github migration.  
+Xavier Fernandez i Marin for help debugging the build.  
+George Helffrich for draping code.  
+Ivan Krylov for window\_group code in X11.
