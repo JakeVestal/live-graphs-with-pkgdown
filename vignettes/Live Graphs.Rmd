@@ -1,0 +1,75 @@
+---
+title: "Live Graphs"
+author: "Jake Vestal, with thanks to Duncan Murdoch"
+output:
+  rmarkdown::html_vignette:
+    fig_height: 5
+    fig_width: 5
+    toc: yes
+  pdf_document:
+    fig_height: 5
+    fig_width: 5
+    toc: yes
+  html_document:
+    default
+vignette: >
+  %\VignetteIndexEntry{Live Graphs}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r setup, include=FALSE}
+if (!requireNamespace("rmarkdown", quietly = TRUE) ||
+    !rmarkdown::pandoc_available("1.14")) {
+  warning(call. = FALSE, "These vignettes assume rmarkdown and pandoc version 1.14.  These were not found. Older versions will not work.")
+  knitr::knit_exit()
+}
+knitr::opts_chunk$set(echo = TRUE)
+library(rgl)
+options(rgl.useNULL = TRUE)
+setupKnitr(autoprint = TRUE)
+```
+
+## dygraphs Candlestick Plot
+```{r}
+suppressMessages(library(xts))
+data(sample_matrix)
+tail(sample_matrix, n = 32) %>%
+  dygraphs::dygraph(m) %>%
+  dygraphs::dyCandlestick()
+```
+
+## plotly 3D Surface Plot
+```{r}
+suppressMessages(library())
+# volcano is a numeric matrix that ships with R
+plotly::plot_ly(z = ~volcano) %>%
+  plotly::add_surface()
+```
+
+## RGL Plot of a Regression Plane through 3D Scatter Data
+```{r}
+# Show regression plane with z as dependent variable
+suppressMessages(library(rgl))
+suppressMessages(open3d())
+x     <- rnorm(100)
+y     <- rnorm(100)
+z     <- 0.2*x - 0.3*y + rnorm(100, sd = 0.3)
+fit   <- lm(z ~ x + y)
+coefs <- coef(fit)
+a     <- coefs["x"]
+b     <- coefs["y"]
+c     <- -1
+d     <- coefs["(Intercept)"]
+planes3d(a, b, c, d, alpha = 0.5)
+```
+For more on RGL, see the package site [here](https://github.com/cran/rgl).
+
+## Leaflet
+```{r}
+suppressMessages(library(leaflet))
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+m  # Print the map
+```
+

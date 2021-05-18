@@ -21,7 +21,10 @@ Imports:
     magrittr,
     rgl,
     stats,
-    utils
+    xts,
+    utils,
+    dygraphs,
+    plotly
 Suggests: 
     akima,
     alphashape3d,
