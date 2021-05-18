@@ -1,12 +1,31 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Live Plots in a pkgdown GitHub Pages Site
+# Live Plots and htmlwidgets in a pkgdown GitHub Pages Site
 
-This package (and its GitHub Pages branch & site) were written for my
-own personal reference so that I could remember how to set up a
+This package, its GitHub Pages branch the pkgdown site were written for
+my own personal reference so that I could remember how to set up a
 [pkgdown](https://pkgdown.r-lib.org/) GitHub Pages site with live,
 interactive graphics… but you can use it too :).
+
+# Duncan Murdoch’s Work
+
+The nuts and bolts of this package came from [Duncan
+Murdoch’s](https://github.com/dmurdoch) work on his [RGL
+package](https://github.com/dmurdoch/rgl), without which this wouldn’t
+be possible. Although I haven’t met him, Duncan’s work is good and he
+should feel good. Note that the LICENSE agreement of this package
+includes an agreement to buy him a delicious beverage if you meet him in
+person.
+
+# (re-)Integration into pkgdown
+
+It’s my hope that eventually, the functionality that powers live graphs
+in pgkdown GitHub Pages sites will become wrapped into the pkgdown
+package itself so that pkgdown users can simply add their graphs to
+their .Rmd files and push them to their GitHub Pages pkgdown sites
+seamlessly. This used to be the case at one point in time; see [pkgdown
+Issue \#1689](https://github.com/r-lib/pkgdown/issues/1689).
 
 # SETUP
 
