@@ -34,7 +34,7 @@ setupKnitr(autoprint = TRUE)
 suppressMessages(library(xts))
 data(sample_matrix)
 tail(sample_matrix, n = 32) %>%
-  dygraphs::dygraph(m) %>%
+  dygraphs::dygraph() %>%
   dygraphs::dyCandlestick()
 ```
 
