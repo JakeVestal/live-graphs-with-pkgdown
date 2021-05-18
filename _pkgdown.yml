@@ -1,6 +1,4 @@
 destination: docs
 url: https://jakevestal.github.io/live.graphs.with.pkgdown
-development:
-  mode: devel
 template:
   assets: inst/htmlwidgets/lib/rglClass/.JSDoc
