@@ -3,6 +3,10 @@
 
 # Live Plots with RGL and htmlwidgets in a pkgdown GitHub Pages Site
 
+Live graphics examples can be found in the (Live
+Graphs)\[<https://jakevestal.github.io/live.graphs.with.pkgdown/articles/Live%20Graphs.html>\]
+article.
+
 This package, its GitHub Pages branch the pkgdown site were written for
 my own personal reference so that I could remember how to set up a
 [pkgdown](https://pkgdown.r-lib.org/) GitHub Pages site with live,
