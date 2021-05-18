@@ -49,17 +49,22 @@ plotly::plot_ly(z = ~volcano) %>%
 ## RGL Plot of a Regression Plane through 3D Scatter Data
 ```{r}
 # Show regression plane with z as dependent variable
-suppressMessages(library(rgl))
-suppressMessages(open3d())
-x     <- rnorm(100)
-y     <- rnorm(100)
-z     <- 0.2*x - 0.3*y + rnorm(100, sd = 0.3)
-fit   <- lm(z ~ x + y)
+library(rgl)
+open3d()
+x <- rnorm(100)
+y <- rnorm(100)
+z <- 0.2*x - 0.3*y + rnorm(100, sd = 0.3)
+fit <- lm(z ~ x + y)
+
+plot3d(x, y, z, type = "s", col = "red", size = 1)
+
+# No plot here, because of the planes3d() call below
+
 coefs <- coef(fit)
-a     <- coefs["x"]
-b     <- coefs["y"]
-c     <- -1
-d     <- coefs["(Intercept)"]
+a <- coefs["x"]
+b <- coefs["y"]
+c <- -1
+d <- coefs["(Intercept)"]
 planes3d(a, b, c, d, alpha = 0.5)
 ```
 For more on RGL, see the package site [here](https://github.com/cran/rgl).
