@@ -8,6 +8,10 @@ my own personal reference so that I could remember how to set up a
 [pkgdown](https://pkgdown.r-lib.org/) GitHub Pages site with live,
 interactive graphics… but you can use it too :).
 
+As of now, **I don’t know of a way to get live plots to show up as live
+within the readme itself**– it only works in the vignettes that show up
+in the **Articles** section. If you figure this out, let me know.
+
 # Duncan Murdoch’s Work
 
 The nuts and bolts of this package came from [Duncan
