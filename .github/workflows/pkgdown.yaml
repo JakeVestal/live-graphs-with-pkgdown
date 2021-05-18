@@ -74,7 +74,6 @@ jobs:
           library(rmarkdown)
           print(paste0("Working directory is: ", getwd()))
           print(paste0("Can see files: ", list.files()))
-          setwd("inst/htmlwidgets/lib/rglClass")
           render("README.Rmd", github_document(html_preview = FALSE))
         shell: Rscript {0}
 
