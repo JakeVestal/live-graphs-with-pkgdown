@@ -7,8 +7,8 @@ Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line) Use four
     spaces when indenting paragraphs within the Description.
 License: MIT + file LICENSE
-URL: https://jakevestal.github.io/live.graphs.with.pkgdown
-BugReports: https://github.com/dmurdoch/rgl/issues
+URL: https://github.com/JakeVestal/live.graphs.with.pkgdown
+BugReports: https://github.com/JakeVestal/live.graphs.with.pkgdown/issues
 Depends: 
     R (>= 3.3.0)
 Imports: 
