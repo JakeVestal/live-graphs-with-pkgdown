@@ -1,9 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/404.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/articles/pkgdown.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/authors.html</loc>
+  </url>
+  <url>
     <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/index.html</loc>
   </url>
   <url>
     <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/reference/hello.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/controls.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/draw.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/global.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/index.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/init.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/list_class.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/mouse.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/pieces.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/projection.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/rglClass.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/rglTimer.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/rgltimerClass.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/rglwidgetClass.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/selection.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/shaders.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/subscenes.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/textures.src.js.html</loc>
+  </url>
+  <url>
+    <loc>https://jakevestal.github.io/live.graphs.with.pkgdown/rglClass/utils.src.js.html</loc>
   </url>
 </urlset>
